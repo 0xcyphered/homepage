@@ -1,0 +1,100 @@
+.content-container .card {
+  z-index: 100;
+  position: absolute;
+  width: 80vw;
+  height: 0vh;
+  top: 10vh;
+  left: 10vw;
+  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2),
+    inset -5px -5px 15px rgba(255, 255, 255, 0.1),
+    5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  opacity: 0.2;
+  transition: 0.5s;
+  &.is-open {
+    height: 80vh;
+    opacity: 1;
+  }
+  .box {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background: #2a2b2f;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s;
+    opacity: 0.8;
+    overflow: auto;
+    &:hover {
+      opacity: 1;
+      .close {
+        color: rgba(255, 255, 255, 0.6);
+        &:hover {
+          color: rgba(255, 255, 255, 1);
+        }
+      }
+    }
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .close {
+      position: absolute;
+      right: 24px;
+      top: 24px;
+      transition: color 0.5s;
+      color: rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+    }
+    .content {
+      padding: 20px;
+      h1 {
+        font-size: 1.8rem;
+        color: #fff;
+        transition: 0.5s;
+        margin:0 0 15px;
+      }
+      h2 {
+        font-size: 1.5rem;
+        color: rgb(133, 133, 133);
+        transition: 0.5s;
+        font-weight: normal;
+        margin: 0 0 12px;
+      }
+      p {
+        font-size: 1rem;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.9);
+        z-index: 1;
+        transition: 0.5s;
+      }
+      a {
+        position: relative;
+        display: inline-block;
+        padding: 8px 20px;
+        background: black;
+        border-radius: 5px;
+        text-decoration: none;
+        color: white;
+        margin-top: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        transition: 0.5s;
+        &:hover {
+          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+          background: #fff;
+          color: #000;
+        }
+      }
+    }
+  }
+}

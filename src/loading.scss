@@ -1,0 +1,145 @@
+$m-01: #3c4359;
+$m-02: #546c8c;
+$m-03: #7ea1bf;
+$m-04: #bacbd9;
+$m-05: #bf80a9;
+
+.loading-frame {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  z-index: 22;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $m-01;
+
+  .loading-box {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .planet {
+    width: 65%;
+    height: 65%;
+    background-color: $m-02;
+    border-radius: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    transform-origin: center center;
+    box-shadow: inset 2px -10px 0px rgba(0, 0, 0, 0.1),
+      inset 2px 10px 0px rgba(255, 255, 255, 0.1);
+    animation: planet 5s ease infinite alternate;
+
+    @keyframes planet {
+      0% {
+        transform: rotate(10deg);
+      }
+
+      100% {
+        transform: rotate(-10deg);
+      }
+    }
+
+    &:before {
+      content: "Loading";
+      font-family: "Roboto Mono", monospace;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      color: $m-04;
+      align-items: center;
+      font-size: 14px;
+      width: 100px;
+      height: 100px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 3;
+    }
+    &:after {
+      content: "";
+      position: absolute;
+      background-color: $m-02;
+      background: linear-gradient(90deg, rgba(2, 0, 36, 0) 0%, $m-02 50%);
+      width: 150px;
+      height: 100px;
+      top: 50%;
+      right: 25px;
+      transform: translateY(-50%);
+      transform-origin: right;
+      z-index: 4;
+      animation: text-loading 7s forwards;
+    }
+
+    @keyframes text-loading {
+      0% {
+        transform: translateY(-50%) scaleX(1);
+      }
+      100% {
+        transform: translateY(-50%) scaleX(0);
+      }
+    }
+
+    /* planet ring */
+    .satellite {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border-radius: 100%;
+      // background-color: $m-04;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform-origin: 33% center;
+      // box-shadow: 2px -10px 0px rgba(0, 0, 0, 0.1),
+      // inset -5px -10px 0px rgba(0, 0, 0, 0.1);
+      animation: ring 3s ease infinite;
+
+      @keyframes ring {
+        0% {
+          transform: rotateX(110deg) rotateZ(0deg) translate(-50px, 5px);
+        }
+
+        100% {
+          transform: rotateX(110deg) rotateZ(360deg) translate(-50px, 5px);
+        }
+      }
+
+      /* small ball */
+      &:before {
+        content: "";
+        position: absolute;
+        width: 10px;
+        height: 30px;
+        border-radius: 100%;
+        background-color: $m-03;
+        z-index: 2;
+        left: calc(0px - 5px);
+        box-shadow: inset -3px 3px 0px rgba(0, 0, 0, 0.2);
+      }
+    }
+
+    /* to cover the back of the ring */
+    .cover-ring {
+      position: absolute;
+      width: 100%;
+      height: 50%;
+      border-bottom-left-radius: 80%;
+      border-bottom-right-radius: 80%;
+      border-top-left-radius: 100px;
+      border-top-right-radius: 100px;
+      transform: translate(0px, -17px);
+      background-color: $m-02;
+      z-index: 2;
+      // box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.1);
+    }
+  }
+}

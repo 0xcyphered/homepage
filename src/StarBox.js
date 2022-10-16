@@ -4,16 +4,13 @@ import { Stars, PointMaterial, useTexture } from "@react-three/drei";
 
 import { useFrame } from "@react-three/fiber";
 
-export default function Box() {
+export default function StarBox() {
   // This reference gives us direct access to the THREE.Mesh object
   const ref = useRef();
   const texture = useTexture(
     "https://raw.githubusercontent.com/Kuntal-Das/textures/main/sp2.png"
   );
 
-  // Hold state for hovered and clicked events
-  const [hovered, hover] = useState(false);
-  const [clicked, click] = useState(false);
   // Subscribe this component to the render-loop, rotate the mesh every frame
   useFrame((state, delta) => (ref.current.rotation.x += delta));
 
@@ -29,24 +26,25 @@ export default function Box() {
         Math.random() * Math.PI,
       ]}
       position={[
-        15000 * (2.0 * Math.random() - 1.0),
-        15000 * (2.0 * Math.random() - 1.0),
-        15000 * (2.0 * Math.random() - 1.0),
+        ((Math.random() * 100).toFixed() % 2 ? 1 : -1) *
+          (250000 * (2.0 * Math.random() - 1.0) + 450000),
+        ((Math.random() * 100).toFixed() % 2 ? 1 : -1) *
+          (250000 * (2.0 * Math.random() - 1.0) + 450000),
+        ((Math.random() * 100).toFixed() % 2 ? 1 : -1) *
+          (250000 * (2.0 * Math.random() - 1.0) + 450000),
       ]}
       matrixAutoUpdate={false}
       ref={ref}
       // onClick={(event) => click(!clicked)}
-      // onPointerOver={(event) => hover(true)}
-      // onPointerOut={(event) => hover(false)}
     >
       <Stars
-        radius={1000}
+        radius={250000}
         depth={1}
-        count={40}
+        count={400}
         factor={100}
         saturation={10000}
         fade
-        speed={1}
+        speed={1.5}
       />
       <PointMaterial size={0.05} transparent={true} map={texture} />
     </mesh>
