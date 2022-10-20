@@ -1,9 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useStore from "../store";
 
-import {
-  Sphere,
-} from "@react-three/drei";
+import { Sphere } from "@react-three/drei";
 
 export default function Planets({ planets }) {
   const [setContentPage] = useStore((state) => [state.setContentPage]);
@@ -12,6 +10,12 @@ export default function Planets({ planets }) {
     setContentPage(page);
   };
 
+  useEffect(() => {
+    if (window.scrollY === 0) {
+      setContentPage('overview');
+    }
+  }, []);
+
   return (
     <>
       {planets.map((sphere, index) => (
@@ -19,8 +23,8 @@ export default function Planets({ planets }) {
           {...sphere}
           key={index}
           onClick={() => clickPlanet(sphere.page)}
-          onPointerOver={() => document.body.style.cursor = 'pointer'}
-          onPointerOut={() => document.body.style.cursor = ''}
+          onPointerOver={() => (document.body.style.cursor = "pointer")}
+          onPointerOut={() => (document.body.style.cursor = "")}
         >
           <meshBasicMaterial color={sphere.color} map={sphere.texture} />
         </Sphere>
