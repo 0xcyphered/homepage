@@ -1,7 +1,5 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 import StarBox from "./StarBox";
-
-
 
 export default function BackgroundStars({ count }) {
   return (

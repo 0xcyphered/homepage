@@ -1,5 +1,4 @@
-import React, { useRef, useState } from "react";
-import * as THREE from "three";
+import React, { useRef } from "react";
 import { Stars, PointMaterial, useTexture } from "@react-three/drei";
 
 import { useFrame } from "@react-three/fiber";
@@ -7,14 +6,10 @@ import { useFrame } from "@react-three/fiber";
 export default function StarBox() {
   // This reference gives us direct access to the THREE.Mesh object
   const ref = useRef();
-  const texture = useTexture(
-    "https://raw.githubusercontent.com/Kuntal-Das/textures/main/sp2.png"
-  );
+  const texture = useTexture("/sp2.png");
 
   // Subscribe this component to the render-loop, rotate the mesh every frame
   useFrame((state, delta) => (ref.current.rotation.x += delta));
-
-  const s = 250;
 
   ref.current?.updateMatrix();
 
@@ -35,7 +30,6 @@ export default function StarBox() {
       ]}
       matrixAutoUpdate={false}
       ref={ref}
-      // onClick={(event) => click(!clicked)}
     >
       <Stars
         radius={250000}

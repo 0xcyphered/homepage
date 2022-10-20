@@ -1,9 +1,10 @@
 import "./Modal.scss";
-import CloseIcon from "./assets/close";
-import useStore from "./store";
-import About from "./content/about";
-import Overview from "./content/overview";
-import Contact from "./content/contact";
+import CloseIcon from "../assets/close";
+import useStore from "../store";
+import About from "../content/about";
+import Overview from "../content/overview";
+import Contact from "../content/contact";
+import OpenSource from "../content/open-source";
 
 export default function Modal() {
   const [contentPage, setContentPage] = useStore((state) => [
@@ -23,6 +24,7 @@ export default function Modal() {
           {contentPage === "overview" && <Overview />}
           {contentPage === "about" && <About />}
           {contentPage === "contact" && <Contact />}
+          {contentPage === "open-source" && <OpenSource />}
         </div>
       </div>
     </div>

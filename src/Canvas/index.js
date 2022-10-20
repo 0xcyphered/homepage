@@ -90,7 +90,7 @@ export default function Canvas() {
       cameraPosition: [40000 + 4 * 120, 0, -4200 * 4 + 4 * 120],
     },
     {
-      page: "contact",
+      page: "open-source",
       texture: earthTexture,
       args: [130],
       position: [60000, 0, -4200 * 4],

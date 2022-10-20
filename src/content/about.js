@@ -8,7 +8,7 @@ export default function About() {
   return (
     <>
       <h1>Cyphered.eth</h1>
-      <h2>Blockchain Developer &bullet; Full-Stack Developer</h2>
+      <h2>Blockchain Developer • Full-Stack Developer</h2>
       <p>
         I am a smart contract expert with
         <b>16 years</b> of self taught experience in the web development. Parts
