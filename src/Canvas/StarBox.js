@@ -20,8 +20,6 @@ export default function StarBox() {
     }
   }, 1);
 
-  // ref.current?.updateMatrix();
-
   return (
     <mesh
       rotation={[

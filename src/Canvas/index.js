@@ -10,7 +10,7 @@ import {
   useTexture,
 } from "@react-three/drei";
 import BackgroundStars from "./BackgroundStars";
-import Planets from "./Planets";
+import Planet from "./Planet";
 
 extend({ Lensflare, LensflareElement });
 
@@ -148,7 +148,6 @@ export default function Canvas() {
       canvasState.movementId = newMovementId;
       const focusPlanet =
         planets[newPageIndex > 0 ? newPageIndex - 1 : newPageIndex];
-      console.log(controls);
       // controls.disable = newPageIndex > 0;
       // controls.enabled = newPageIndex === 0;
       // controls.reset()
@@ -203,15 +202,9 @@ export default function Canvas() {
     camera.rotation.copy(startRotation);
     camera.position.copy(startPosition);
 
-    // const targetRotation = new THREE.ArrowHelper(
-    //   new THREE.Vector3(x2, y2, z2),
-    //   new THREE.Vector3(startPosition.x + distanceX / 4, startPosition.y + distanceY / 4, startPosition.z + distanceZ / 4)
-    // );
-    // const endRotation = new THREE.Euler().copy(targetRotation.rotation);
-
     new TWEEN.Tween(startRotation)
       .to(endRotation, cameraMoveDuration)
-      // .easing(TWEEN.Easing.Quadratic.Out)
+      // .easing(TWEEN.Easing.QuadraticK.In)
       .onUpdate((d, time) => {
         if (movementId != canvasState.movementId) {
           return;
@@ -230,7 +223,7 @@ export default function Canvas() {
         },
         duration
       )
-      // .easing(TWEEN.Easing.Quadratic.Out)
+      // .easing(TWEEN.Easing.Quadratic.In)
       .onUpdate((d, time) => {
         if (movementId != canvasState.movementId) {
           return;
@@ -321,7 +314,9 @@ export default function Canvas() {
           <lensflare onUpdate={addFlare(index)} />
         </pointLight>
       ))}
-      <Planets planets={planets} />
+      {planets.map((planet, index) => (
+        <Planet planet={planet} key={index}/>
+      ))}
       <BackgroundStars count={200} />
       <Stats />
     </>
