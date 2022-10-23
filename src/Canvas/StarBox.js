@@ -9,9 +9,18 @@ export default function StarBox() {
   const texture = useTexture("/sp2.png");
 
   // Subscribe this component to the render-loop, rotate the mesh every frame
-  useFrame((state, delta) => (ref.current.rotation.x += delta));
+  useFrame((state, delta) => {
+    if (Math.floor(Math.random() * 100) % 60 === 0) {
+      ref.current.rotation.set(
+        ref.current.rotation.x + delta,
+        ref.current.rotation.y + delta,
+        ref.current.rotation.z + delta
+      );
+      ref.current?.updateMatrix();
+    }
+  }, 1);
 
-  ref.current?.updateMatrix();
+  // ref.current?.updateMatrix();
 
   return (
     <mesh
@@ -28,17 +37,18 @@ export default function StarBox() {
         ((Math.random() * 100).toFixed() % 2 ? 1 : -1) *
           (250000 * (2.0 * Math.random() - 1.0) + 450000),
       ]}
-      matrixAutoUpdate={false}
       ref={ref}
+      matrixAutoUpdate={true}
     >
       <Stars
         radius={250000}
         depth={1}
         count={400}
         factor={100}
+        matrixAutoUpdate={true}
         saturation={10000}
         fade
-        speed={1.5}
+        speed={0}
       />
       <PointMaterial size={0.05} transparent={true} map={texture} />
     </mesh>

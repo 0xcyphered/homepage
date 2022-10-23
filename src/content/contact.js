@@ -21,13 +21,6 @@ export default function Contact() {
           <a href="mailto:0xcyphered@gmail.com">0xcyphered@gmail.com</a>
         </li>
         <li>
-          <FontAwesomeIcon icon={faLinkedin} />
-          &nbsp;
-          <a href="https://www.linkedin.com/in/cyphered/" target="_blank">
-            linkedin.com/in/<span className="text-purple">cyphered</span>
-          </a>
-        </li>
-        <li>
           <FontAwesomeIcon icon={faTwitter} />
           &nbsp;
           <a href="https://twitter.com/0xcyphered/" target="_blank">
